@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :dliveries
   devise_for :order_items
   devise_for :genres
