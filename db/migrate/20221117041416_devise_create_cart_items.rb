@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateCarts < ActiveRecord::Migration[6.1]
+class DeviseCreateCartItems < ActiveRecord::Migration[6.1]
   def change
-    create_table :carts do |t|
+    create_table :cart_items do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,17 +31,17 @@ class DeviseCreateCarts < ActiveRecord::Migration[6.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-      
       t.integer :customer_id, null: false
       t.integer :product_id, null: false
       t.string :product_count, null: false
 
+
       t.timestamps null: false
     end
 
-    add_index :carts, :email,                unique: true
-    add_index :carts, :reset_password_token, unique: true
-    # add_index :carts, :confirmation_token,   unique: true
-    # add_index :carts, :unlock_token,         unique: true
+    add_index :cart_items, :email,                unique: true
+    add_index :cart_items, :reset_password_token, unique: true
+    # add_index :cart_items, :confirmation_token,   unique: true
+    # add_index :cart_items, :unlock_token,         unique: true
   end
 end

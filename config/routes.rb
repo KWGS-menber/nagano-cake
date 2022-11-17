@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :cart_items
   devise_for :users
   devise_for :dliveries
   devise_for :order_items
   devise_for :genres
-  devise_for :carts
   devise_for :products
   devise_for :orders
   devise_for :admins
