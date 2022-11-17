@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMM WEBCAMP チーム開発
+チーム「KWGS」
 
-Things you may want to cover:
+作成者
+Waggy
+なかむー
+カズ
+ぐっち
 
-* Ruby version
+環境
+使用言語
+・HTML&CSS
+・Ruby
+・JavaScript
+・Ruby on rails 6.2
 
-* System dependencies
+Gem
+・bootstrap
+・devise
+・jquery-rails
+・kaminari
+・GitHub
 
-* Configuration
+ECサイト
+ながのCAKE
 
-* Database creation
+実装機能
+顧客側
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+管理者側
