@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateDliveries < ActiveRecord::Migration[6.1]
+class DeviseCreateDeliveries < ActiveRecord::Migration[6.1]
   def change
-    create_table :dliveries do |t|
+    create_table :deliveries do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -37,12 +37,13 @@ class DeviseCreateDliveries < ActiveRecord::Migration[6.1]
       t.string :zip, null: false
       t.string :address, null: false
 
+
       t.timestamps null: false
     end
 
-    add_index :dliveries, :email,                unique: true
-    add_index :dliveries, :reset_password_token, unique: true
-    # add_index :dliveries, :confirmation_token,   unique: true
-    # add_index :dliveries, :unlock_token,         unique: true
+    add_index :deliveries, :email,                unique: true
+    add_index :deliveries, :reset_password_token, unique: true
+    # add_index :deliveries, :confirmation_token,   unique: true
+    # add_index :deliveries, :unlock_token,         unique: true
   end
 end
