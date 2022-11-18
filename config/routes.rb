@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :deliveries
   root to: 'public/homes#top'
   get "about" => "public/home#about"
 
