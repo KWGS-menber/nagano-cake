@@ -19,6 +19,7 @@ class Customer < ApplicationRecord
   validates :phone_number, presence:true
   validates :email, presence:true
 
+  #退会機能
   #def active_for_authentication?
 
 end

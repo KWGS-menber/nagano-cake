@@ -11,13 +11,16 @@ class Public::CustomersController < ApplicationController
    @customer = current_customer
   end
 
-  #登録情報の編集を保存するアクション(フラッシュメッセージ入れる？)
+  #登録情報の編集を保存するアクション
   def update
    @customer = current_customer
    if @customer.update(customer_params)
+    flash[:notice] = "登録情報の変更が完了しました。"
     redirect_to customer_path(@customer)
    else
+    flash[:notice] = "登録情報の変更に失敗しました。"
     render 'edit'
+   end
   end
 
  #登録情報編集画面から退会ページを表示するアクション
