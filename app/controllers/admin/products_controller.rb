@@ -1,14 +1,18 @@
 class Admin::ProductsController < ApplicationController
   def new
     @product=Product.new
-  end
-  def show
+    @genre=Genre.all
     
   end
   
+  def show
+    @product=Product.find(params[:id])
+  end
+  
   def create
-  product=Product.new
-  product.save
+  @product=Product.new(product_params)
+  @product.save
+  redirect_to admin_product_path(@product.id)
   end
   
   
