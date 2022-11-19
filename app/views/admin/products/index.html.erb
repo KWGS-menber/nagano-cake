@@ -1,16 +1,31 @@
-<h2>商品一覧</h2>
+<div class="container m-5">
+  <div class="row">
+    <div class="col-8 offset-2">
+    <h2>商品一覧</h2> <div class="col-2 offset-9"><%=link_to 'New Product',new_admin_product_path%></div>
 
-<table>
-  <% @products.each do |pro|%>
-  <%=pro.id%>
-  <%=link_to pro.name, admin_product_path(pro.id)%>
-  <%=pro.price%>
-  <%=pro.genre.name%>
-<% if pro.is_active= true%>
-<%='販売中' %>
-<%else%>
-<%='販売停止中' %>
-<%end%>
-
-  <%end%>
-</table>
+    <table class="table">
+      <% @products.each do |pro|%>
+      <tr class="table-secondary">
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+      <tr>
+       <td><%=pro.id%></td>
+       <td><%=link_to pro.name, admin_product_path(pro.id)%></td>
+       <td><%=pro.price%></td>
+       <td><%=pro.genre.name%></td>
+       <td><% if pro.is_active= true%>
+        <strong><%='販売中' %></strong>
+            <%else%>
+        <strong><%='販売停止中' %></strong>
+        </td>
+            <%end%>
+       </tr>
+     <%end%>
+   </table>
+  </div>
+ </div>
+</div>
