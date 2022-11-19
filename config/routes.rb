@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :deliveries
+
   root to: 'public/homes#top'
-  get "about" => "public/home#about"
+  get "about" => "public/homes#about"
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -21,12 +21,10 @@ Rails.application.routes.draw do
     resources :order_items, only:[:update]
   end
 
-  namespace :public do
-    get '/about' => 'homes#about'
+  scope '/public' do
     resources :products, only:[:index,:show] do
       get 'search' => "genres#search"
     end
-    resource :customers, only:[:show ,:edit,:update]
     # idは必要ないためresoure
     get '/customers/my_page' => 'customers#show'
     get '/customers/infomation/edit' => 'customers#edit'
@@ -41,6 +39,25 @@ Rails.application.routes.draw do
     get '/orders/thanks' => 'orders#thanks'
     resources :deliveries, only:[:index,:edit,:create,:update,:destroy]
   end
+
+  # namespace :public do
+  #   resources :products, only:[:index,:show] do
+  #     get 'search' => "genres#search"
+  #   end
+  #   # idは必要ないためresoure
+  #   get '/customers/my_page' => 'customers#show', module: 'public'
+  #   get '/customers/infomation/edit' => 'customers#edit'
+  #   get '/customers/infomation' => 'customers#update'
+  #   get '/customers/unsubscribe' => 'customers#destroy'
+  #   patch '/customers/delete_status' => 'customers#is_deleted'
+  #   resources :cart_items, only:[:index,:update,:destroy,:create]
+  #   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+  #   resources :orders, only:[:new,:index,:show,:create]
+  #   get '/orders/new' => 'orders#new'
+  #   post '/orders/confirm' => 'orders#confirm'
+  #   get '/orders/thanks' => 'orders#thanks'
+  #   resources :deliveries, only:[:index,:edit,:create,:update,:destroy]
+  # end
 
 
 end
