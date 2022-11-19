@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :deliveries
+
   root to: 'public/homes#top'
   get "about" => "public/homes#about"
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       get 'search' => "genres#search"
     end
     # idは必要ないためresoure
-    get '/customers/my_page' => 'customers#show', module: 'public'
+    get '/customers/my_page' => 'customers#show'
     get '/customers/infomation/edit' => 'customers#edit'
     get '/customers/infomation' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#destroy'
