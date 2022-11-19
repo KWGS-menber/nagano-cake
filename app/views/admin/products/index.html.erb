@@ -1,0 +1,16 @@
+<h2>商品一覧</h2>
+
+<table>
+  <% @products.each do |pro|%>
+  <%=pro.id%>
+  <%=link_to pro.name, admin_product_path(pro.id)%>
+  <%=pro.price%>
+  <%=pro.genre.name%>
+<% if pro.is_active= true%>
+<%='販売中' %>
+<%else%>
+<%='販売停止中' %>
+<%end%>
+
+  <%end%>
+</table>

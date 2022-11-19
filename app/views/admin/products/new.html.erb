@@ -1,23 +1,46 @@
-<h2>商品新規登録</h2>
-
-<%= form_with url: new_admin_product_path, model: @product do |f|%>
-<p>商品画像</p><%= f.file_field :image %>
-<p>商品名</p>
-<%= f.text_field :name, placeholder: "商品名"%>
-<p>商品説明</p>
-<%= f.text_area:explanation, placeholder: "ここに説明文を記述します"%>
-<p>ジャンル</p>
-<%= f.text_field:genre_id %>
-<!--%= f.select :genre_id,{ '選択してください':""}%-->
-<p>税抜価格</p>
-<p><%= f.number_field:price, placeholder: "1000"%>円</p>
-
-<span>販売ステータス
-<%= f.radio_button:is_active, true %>
-<%= f.label:is_active, '販売中', value: true %>
-
-<%= f.radio_button:is_active, false%>
-<%= f.label:is_active, '販売停止中', value: false %></span>
-
-<div><%= f.submit'新規登録',class: 'btn btn-success' %></div>
-<%end%>
+<!--<div class="alert alert-success" role="alert">-->
+<!--  アラートのサンプルです！-->
+<!--</div>-->
+<div class="container m-5">
+  <div class="row">
+    <div class="col-4">
+     <h3>商品新規登録</h3>
+    </div>
+    <div class="col md-4">
+     <table>
+      <tr>
+       <%= form_with url: admin_products_path, model: @product do |f|%>
+       <th>商品画像</th><th><%= f.file_field :image, accept: "image/*" %></th>
+      </tr>
+      <tr>
+       <th>商品名</th>
+       <td><%= f.text_field :name, placeholder: "商品名"%></td>
+      </tr>
+      <tr>
+       <th>商品説明</th>
+       <td><%= f.text_area:explanation, placeholder: "ここに説明文を記述します", rows: '5'%></td>
+      </tr>
+      <tr>
+       <th>ジャンル</th>
+       <td><%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %></td>
+      </tr>
+      <tr>
+       <th>税抜価格</th>
+       <td><%= f.number_field:price, placeholder: "1000"%>円</td>
+      </tr>
+      <tr>
+       <th>販売ステータス</th>
+       <td><%= f.radio_button:is_active, true %>
+       <%= f.label:is_active, '販売中', value: true %>
+       <%= f.radio_button:is_active, false%>
+       <%= f.label:is_active, '販売停止中', value: false %></td>
+      </tr>
+      <td><%= f.submit'新規登録',class: 'btn btn-success' %></td>
+      <%end%>
+     </table>
+    </div>
+    <div class="col-4">
+      Column
+    </div>
+  </div>
+</div>
