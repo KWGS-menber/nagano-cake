@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get '/admins' => 'admins#top'
     resources :products, only:[:index,:create,:show,:edit,:update,:new]
     resources :genres, only:[:index,:create,:edit,:update]
     resources :customers, only:[:index,:show,:edit,:update]
