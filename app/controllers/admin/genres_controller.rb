@@ -1,16 +1,17 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @genre = Genre.new
-    @genres = Genre.all.page(params[:page]).per(10)
+    @genres = Genre.page(params[:page]).per(10)
   end
 
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
       flash[:notice] = "ジャンルを登録しました"
-      redirect_to admin_genres_path
+      redirect_to request.referer
     else
-      @genres = Genre.all.page(params[:page]).per(10)
+      @genres = Genre.page(params[:page]).per(10)
       flash[:notice] = "ジャンル名を入力してください"
       render :index
     end

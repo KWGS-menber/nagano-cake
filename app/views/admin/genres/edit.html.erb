@@ -1,9 +1,9 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <%= render 'layouts/errors', obj: @genre %>
+      <%#= render 'layouts/errors', obj: @genre %>
   		<h2 class="bg-light">ジャンル編集</h2>
-      <%= form_with model: @genre, url:edit_admin_genre_path(@genre.id), method: :patch do |f| %>
+      <%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
       <div class="form-group">
         <%= f.label :ジャンル名 %>
         <%= f.text_field:name, class: 'form-control book_title' %>
