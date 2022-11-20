@@ -29,6 +29,12 @@ class Public::CustomersController < ApplicationController
 
   #退会アクション
   def is_deleted
+   @customer = current_customer
+   #is_deletedカラムにフラグを立てる(defaultはfalse)
+   @customer.update(is_deleted: true)
+   reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
 
