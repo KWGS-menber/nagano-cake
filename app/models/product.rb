@@ -6,6 +6,13 @@ class Product < ApplicationRecord
   belongs_to:genre
   Genre.select(:name)
   has_one_attached :image
+  validates:name,presence: true,length: { minimum: 1, maximum: 20 }
+  validates:explanation, presence: true,length: { minimum: 1, maximum: 200 }
+  validates:price,presence: true
+  
+  def add_tax_price
+        (self.price * 1.08).round
+  end
   
   def get_image(width,height)
     unless image.attached?

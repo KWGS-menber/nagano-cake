@@ -11,13 +11,26 @@
         <%end%>
       </table>
     </div>　　
-    　　　　　　　<!--<adminから情報きてる？>-->
+    　　
     
     <div class="col-md-8">
       <p>商品一覧</p>
-      <%= image_tag @product.get_image(200,100)%>
-      <%=@product.name%>
-      <%=@product.price%>
+      <div class="card" style="width: 18rem;">
+          <% @products.each do |product|%>
+       <div class="card-body">
+           <%= image_tag product.get_image(200,100)%>
+         <h5 class="card-title"><%=product.name%></h5>
+         
+         ¥<%=product.price%>
+         <%end%>
+       </div>
+      </div>
+      
     </div>
   </div>
 </div>
+
+    
+    <!--Some quick example text to build on the card title and make up the bulk of the card's content.-->
+    <!--<a href="#" class="card-link">Card link</a>-->
+    <!--<a href="#" class="card-link">Another link</a>-->
