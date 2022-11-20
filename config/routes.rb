@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     # idは必要ないためresoure
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
-    get '/customers/information' => 'customers#update'
+    patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#destroy'
     patch '/customers/delete_status' => 'customers#is_deleted'
     resources :cart_items, only:[:index,:update,:destroy,:create]
