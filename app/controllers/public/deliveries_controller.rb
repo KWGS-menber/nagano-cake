@@ -10,11 +10,12 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.new(delivery_params)
+    @delivery.customer_id = current_customer.id
     if @delivery.save
       flash[:notice] = "配送先住所を登録しました"
-      redirect_to public_deliveryies_path
+      redirect_to deliveryies_path
     else
-      @delivery = delivery.all.page(params[:page]).per(10)
+      @deliveries = Delivery.all.page(params[:page]).per(10)
       flash[:notice] = "配送先住所を入力してください"
       render :index
     end
@@ -24,7 +25,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
       flash[:notice] = "配送先住所を変更しました"
-      redirect_to public_deliveryies_path
+      redirect_to deliveryies_path
     else
       flash[:notice] = "配送先住所を入力してください"
       render :edit
@@ -34,7 +35,7 @@ class Public::DeliveriesController < ApplicationController
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to public_deliveryies_path
+    redirect_to deliveryies_path
   end
 
   private

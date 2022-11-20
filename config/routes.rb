@@ -21,16 +21,14 @@ Rails.application.routes.draw do
     resources :order_items, only:[:update]
   end
 
-    # get '/customers/my_page' => 'customers#show'
-
   scope module: :public do
     resources :products, only:[:index,:show] do
       get 'search' => "genres#search"
     end
-    # resources customerの場合はidは必要ないためresoure
+    # idは必要ないためresoure
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
-    patch '/customers/information' => 'customers#update'
+    get '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#destroy'
     patch '/customers/delete_status' => 'customers#is_deleted'
     resources :cart_items, only:[:index,:update,:destroy,:create]
