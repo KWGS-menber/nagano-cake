@@ -1,0 +1,34 @@
+<header>
+  <nav class="nav navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+    <!--<nav class="nav navbar-expand-lg navbar-light bg-light">-->
+      <!--<%#= link_to root_path do %>-->
+        <!--<%#= image_tag "", :size =>'80x80' %>-->
+      <!--<%# end %>-->
+      <ul class="navbar-nav ms-auto">
+      <!--customerでログインしている時-->
+      <% if customer_signed_in? %>
+        <li>ようこそ、<%= current_customer.last_name %>さん！</li>
+        <li><%= link_to customer_my_page_path(current_customer) do %><button type="button" class="btn btn-outline-dark">マイページ<% end %></li>
+        <li><%= link_to products_path do %><button type="button" class="btn btn-outline-dark">商品一覧<% end %></li>
+        <li><%= link_to cart_items_path do %><button type="button" class="btn btn-outline-dark">カート<% end %></li>
+        <li><%= link_to destroy_customer_session_path, method: :delete do %><button type="button" class="btn btn-outline-danger">ログアウト<% end %></li>
+      <!--adminでログインしている時-->
+      <% elsif admin_signed_in? %>
+        <li><%= link_to admin_product_items_path do %><button type="button" class="btn btn-outline-dark">商品一覧<% end %></li>
+        <li><%= link_to admin_members_path do %><button type="button" class="btn btn-outline-dark">会員一覧<% end %></li>
+        <li><%= link_to admin_orders_path do %><button type="button" class="btn btn-outline-dark">注文商品一覧<% end %></li>
+        <li><%= link_to admin_genres_path do %><button type="button" class="btn btn-outline-dark">ジャンル一覧<% end %></li>
+        <li><%= link_to destroy_admin_session_path, method: :delete do %><button type="button" class="btn btn-outline-danger">ログアウト<% end %></li>
+      <% else %>
+      <!--ログインしていない状態-->
+        <li><%= link_to products_path do %><button type="button" class="btn btn-outline-dark">商品一覧<% end %></li>
+        <li><%= link_to about_path do %><button type="button" class="btn btn-outline-dark">アバウト<% end %></li>
+        <li><%= link_to new_customer_registration_path do %><button type="button" class="btn btn-outline-dark">新規登録<% end %></li>
+        <li><%= link_to new_customer_session_path do %><button type="button" class="btn btn-outline-danger">ログイン<% end %></li>
+      <% end %>
+      </ul>
+    <!--</nav>-->
+    </div>
+  </nav>
+</header>
