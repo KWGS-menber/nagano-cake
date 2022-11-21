@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: 'test@test.com',
-    password: '123456',
-)
-
+     email: 'test@test.com',
+     password: '123456',
+ )
 
 # ジャンルseed
 Genre.create!(
@@ -55,7 +54,7 @@ product3 = Product.create!(
 )
 product3.image.attach(io: File.open(Rails.root.join("app/assets/images/pudding.jpg")), filename: "pudding.jpg")
 
-#Cutomer.Mdel(3)
+#Customer.Mdel(3)
 Customer.create!(
   [
     {
@@ -93,7 +92,6 @@ Customer.create!(
     }
   ]
 )
-
 
 # 配送先seed
 Delivery.create!(
