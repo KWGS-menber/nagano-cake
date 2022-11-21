@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/delete_status' => 'customers#is_deleted'
+　　　　　　　　patch '/customers/delete_status' => 'customers#is_deleted'
     resources :cart_items, only:[:index,:update,:destroy,:create]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :orders, only:[:new,:index,:show,:create]

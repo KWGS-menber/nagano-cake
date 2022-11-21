@@ -15,13 +15,13 @@ Admin.create!(
 Genre.create!(
   [
     {
-      name: 'ケーキ',
+      name: 'ケーキ'
     },
     {
-      name: '焼き菓子',
+      name: '焼き菓子'
     },
     {
-      name: 'プリン',
+      name: 'プリン'
     }
   ]
 )
