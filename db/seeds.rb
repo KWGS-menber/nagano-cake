@@ -6,10 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(
-#     email: 'test@test.com',
-#     password: '123456',
-# )
+Admin.create!(
+    email: 'test@test.com',
+    password: '123456',
+)
+
+# # ジャンルseed
+Genre.create!(
+  [
+    {
+      name: 'ケーキ',
+    },
+    {
+      name: '焼き菓子',
+    },
+    {
+      name: 'プリン',
+    }
+  ]
+)
 
 product=Product.create!(
       genre_id: 1,
@@ -78,20 +93,7 @@ Customer.create!(
   ]
 )
 
-# ジャンルseed
-Genre.create!(
-  [
-    {
-      name: 'ケーキ'
-    },
-    {
-      name: '焼き菓子'
-    },
-    {
-      name: 'プリン'
-    }
-  ]
-)
+
 
 # 配送先seed
 Delivery.create!(
