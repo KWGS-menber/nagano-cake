@@ -6,10 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(
-#     email: 'test@test.com',
-#     password: '123456',
-# )
+Admin.create!(
+     email: 'test@test.com',
+     password: '123456',
+ )
+
+# ジャンルseed
+Genre.create!(
+  [
+    {
+      name: 'ケーキ',
+    },
+    {
+      name: '焼き菓子',
+    },
+    {
+      name: 'プリン',
+    }
+  ]
+)
 
 product=Product.create!(
       genre_id: 1,
@@ -39,7 +54,7 @@ product3 = Product.create!(
 )
 product3.image.attach(io: File.open(Rails.root.join("app/assets/images/pudding.jpg")), filename: "pudding.jpg")
 
-#Cutomer.Mdel(3)
+#Customer.Mdel(3)
 Customer.create!(
   [
     {
@@ -74,21 +89,6 @@ Customer.create!(
         address: '東京都港区□□',
         phone_number: '5555555555',
         password: 'eeeeee',
-    }
-  ]
-)
-
-# ジャンルseed
-Genre.create!(
-  [
-    {
-      name: 'ケーキ'
-    },
-    {
-      name: '焼き菓子'
-    },
-    {
-      name: 'プリン'
     }
   ]
 )

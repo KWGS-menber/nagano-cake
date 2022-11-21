@@ -3,7 +3,7 @@
      <div class = 'col-sm-12 col-md-8 col-lg-5 px-5 px-sm0 mx-auto'>
       <h4 class = 'bg-light'><strong>ログイン</strong></h4>
         <h6 class = 'bg-light'><strong>会員の方はこちらからログイン</strong></h6>
-              <%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
+              <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
                 <div class="field">
                   <%= f.label :"メールアドレス" %><br />
                   <%= f.email_field :email, autofocus: true, placeholder:"sample@example.com", autocomplete: "email" %>
@@ -23,5 +23,5 @@
 
          <h6 class = 'bg-light'><strong>会員登録がお済みでない方</strong></h6>
             <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
-    <%= render "admin/shared/links" %>
+    <%#= render "admin/shared/links" %>
 </div>
