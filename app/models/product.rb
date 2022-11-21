@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 
-  belongs_to:genre
+  belongs_to:genre,dependent: :destroy
+  belongs_to:cart_items,dependent: :destroy
   Genre.select(:name)
   has_one_attached :image
   validates:name,presence: true,length: { minimum: 1, maximum: 20 }

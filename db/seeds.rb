@@ -11,6 +11,7 @@ Admin.create!(
     password: '123456',
 )
 
+
 # ジャンルseed
 Genre.create!(
   [
@@ -92,6 +93,7 @@ Customer.create!(
     }
   ]
 )
+
 
 # 配送先seed
 Delivery.create!(
