@@ -4,7 +4,6 @@
     <h2>商品一覧</h2> <div class="col-2 offset-9"><%=link_to 'New Product',new_admin_product_path%></div>
 
     <table class="table">
-      <% @products.each do |pro|%>
       <tr class="table-secondary">
         <th>商品ID</th>
         <th>商品名</th>
@@ -12,15 +11,16 @@
         <th>ジャンル</th>
         <th>ステータス</th>
       </tr>
+      <% @products.each do |product|%>
       <tr>
-       <td><%=pro.id%></td>
-       <td><%=link_to pro.name, admin_product_path(pro.id)%></td>
-       <td><%=pro.price%></td>
-       <td><%=pro.genre.name%></td>
-       <td><% if pro.is_active= true%>
-        <strong><%='販売中' %></strong>
+       <td><%=product.id%></td>
+       <td><%=link_to product.name, admin_product_path(product.id)%></td>
+       <td><%=product.price.to_s(:delimited)%></td>
+       <td><%=product.genre.name%></td>
+       <td><% if product.is_active= true%>
+        <strong class="text-success"><%='販売中' %></strong>
             <%else%>
-        <strong><%='販売停止中' %></strong>
+        <strong class="text-secondry"><%='販売停止中' %></strong>
         </td>
             <%end%>
        </tr>

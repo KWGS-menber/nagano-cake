@@ -1,1 +1,20 @@
-<p>Producs#show</p>
+<div class="container m-5">
+  <div class="row">
+<!--写真に拡大機能つけてみる-->
+    <div class="col-md-4">
+        <%= image_tag @product.get_image(300,200)%>
+    </div>
+    <div class="col-md-4 offset-2 ">
+     
+          <h3><%= @product.name%></h3>
+      
+          
+          <p><%= @product.explanation%></p>
+          
+          <h4>¥<%= @product.add_tax_price.to_s(:delimited) %></h4><p>(税込)</p>
+         
+         <%= link_to 'カートに入れる', products_path,class: 'btn btn-success' %>
+      
+    </div>
+  </div>
+</div>
