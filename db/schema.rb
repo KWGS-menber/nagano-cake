@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_11_20_124659) do
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
     t.string "product_count", null: false
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
