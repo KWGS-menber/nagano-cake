@@ -6,11 +6,10 @@ class Admin::ProductsController < ApplicationController
 
  def create
    @product=Product.new(product_params)
-   #@product.genre_id=genre.id
-   #if 
+   # if 
    @product.save
-   flash[:notice]="商品の登録が完了しました"
-   redirect_to admin_product_path(@product.id)
+   #  flash[:notice]="商品の登録が完了しました"
+    redirect_to admin_product_path(@product.id)
    # else
    #  flash[:danger]="未入力項目があります"
    #  @product=Product.new(product_params)
@@ -20,7 +19,7 @@ class Admin::ProductsController < ApplicationController
   
  def show
     @product=Product.find(params[:id])
-    @genre=Genre.find(params[:id])
+    @genre=@product.genre
  end  
  
  def update
