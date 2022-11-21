@@ -1,4 +1,4 @@
-
+<%= flash[:danger] %>
 
 <div class="container m-5">
   <div class="row">
@@ -6,7 +6,7 @@
     <div class="col-8 md-8 offset-2 ">
      
      <table>
-      <%= form_with url: admin_products_path, model: @product do |f|%>
+      <%= form_with url: admin_products_path,method: :post, model: @product do |f|%>
       <tr>
         <th>商品画像</th><th><%= f.file_field :image, accept: "image/*" %></th>
       </tr>
@@ -24,7 +24,7 @@
       </tr>
       <tr>
        <th>税抜価格</th>
-       <td><%= f.number_field:price, placeholder: "1000"%>円</td>
+       <td><%= f.text_field:price, placeholder: "1000"%>円</td>
       </tr>
       <tr>
         <th>販売ステータス</th>
