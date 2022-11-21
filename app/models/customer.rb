@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   validates :phone_number, presence:true
   validates :email, presence:true
 
-  #退会機能 
+  #退会機能
   # is_deletedがfalseならtrueを返すようにしている
   #ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約を設ける
   def active_for_authentication?
