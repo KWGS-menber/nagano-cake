@@ -11,17 +11,18 @@ Admin.create!(
     password: '123456',
 )
 
-# # ジャンルseed
+
+# ジャンルseed
 Genre.create!(
   [
     {
-      name: 'ケーキ',
+      name: 'ケーキ'
     },
     {
-      name: '焼き菓子',
+      name: '焼き菓子'
     },
     {
-      name: 'プリン',
+      name: 'プリン'
     }
   ]
 )
@@ -92,7 +93,6 @@ Customer.create!(
     }
   ]
 )
-
 
 
 # 配送先seed
