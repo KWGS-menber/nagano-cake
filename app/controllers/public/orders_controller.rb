@@ -8,9 +8,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.postal_code = current_customer.postal_code
-    @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+    @address = Address.find(params[:order][:address_id])
+    @order.zip = @address.zip
+    @order.address = @address.address
+    @order.name = @address.name
+    @cart_items = current_customer.cart_items.all
+
   end
 
   def thanks
@@ -20,13 +23,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+   @orders = current_customer.orders
   end
 
   def show
+   @order = Order.find(params[:id])
+   @order_items = @order.order_items
   end
-
+  
   private
+  
+  
   def order_params
-      params.require(:order).permit(:zip, :address, :payment_method, :select_address,:name)
+    params.require(:order).permit( :name, :zip, :address,:total_price,:postage,:payment_method,:status, :select_address)
   end
 end
