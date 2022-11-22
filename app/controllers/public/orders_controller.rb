@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+
   def new
     @customer = current_customer
   end
@@ -17,8 +18,5 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-
-
-
 
 end
