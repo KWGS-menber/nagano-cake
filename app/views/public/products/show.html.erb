@@ -25,7 +25,11 @@
                  <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
                  <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
                <%= f.submit "カートに入れる",class:"btn btn-success" %>
-              <% end %>
+               <% end %>
+               <%else%>
+               <p>販売停止中</p>
+               <%= link_to '商品一覧に戻る', products_path,class: 'btn btn-secondary' %>
+              
             <% end %>
       
     </div>
