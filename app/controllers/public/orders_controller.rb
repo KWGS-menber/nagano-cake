@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_items = current_customer.cart_items.all
   end
 
   def thanks
@@ -21,6 +22,13 @@ class Public::OrdersController < ApplicationController
   def show
    @order = Order.find(params[:id])
    @order_items = @order.order_items
+  end
+  
+  private
+  
+  
+  def order_params
+    params.require(:order).permit(:customer_id, :name, :zip, :address,:total_price,:postage,:payment_method,:status)
   end
 
 end

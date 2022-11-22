@@ -1,8 +1,8 @@
-
+<div class="d-flex">
 <% products.each do |product|%>
-      <div class="card" style="width: 13rem;">
+      <div class="card m-1" style="width: 13rem;">
         <div class="card-body">
-          <%=link_to product_path(product.id) do %>
+          <%=link_to product_path(product.id), class: "text-dark" do %>
            <%= image_tag product.get_image(200,100)%>
          <h5 class="card-title"><%=product.name%></h5>
          <%end%>
@@ -11,3 +11,4 @@
          
       </div>
       <%end%>
+</div>
