@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get "about" => "public/homes#about"
+  get "admins" => "admin/homes#top"
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get '/admins' => 'admins#top'
+    # get '/admins' => 'admins/homes#top'
     resources :products, only:[:index,:create,:show,:edit,:update,:new]
     resources :genres, only:[:index,:create,:edit,:update]
     resources :customers, only:[:index,:show,:edit,:update]
