@@ -3,7 +3,7 @@ class Delivery < ApplicationRecord
   validates :name, presence: true
   validates :zip, presence: true
   validates :address, presence: true
-  
+
   def address_display
   '〒' + zip + ' ' + address + ' ' + name
   end
