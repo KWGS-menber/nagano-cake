@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-     email: 'test@test.com',
-     password: '123456',
- )
+    email: 'test@test.com',
+    password: '123456',
+)
 
 # ジャンルseed
 Genre.create!(

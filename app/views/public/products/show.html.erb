@@ -24,7 +24,7 @@
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
    <%= f.label :product_count, "個数選択" %>
     <%= f.select :product_count, [1,2,3,4,5,6,7,8,9,10] %>
-   <%= f.hidden_field :item_id, :value => @product.id %>
+   <%= f.hidden_field :product_id, :value => @product.id %>
      <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
      <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
    <%= f.submit "カートに入れる" %>
