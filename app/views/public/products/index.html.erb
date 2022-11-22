@@ -4,26 +4,12 @@
       <%=render 'genre_form',genres: @genres%>
     </div>
     　　
-    <!--リンク注入し部分テンプレにする-->
+    
     <div class="col-md-8">
-      <p>商品一覧</p>
-      <% @products.each do |product|%>
-      <div class="card" style="width: 13rem;">
-        <div class="card-body">
-          <%=link_to product_path(product.id) do %>
-           <%= image_tag product.get_image(200,100)%>
-         <h5 class="card-title"><%=product.name%></h5>
-         <%end%>
-           ¥<%=product.price.to_s(:delimited)%>
-        </div>
-         <%end%>
+      <h3>商品一覧</h3><p>(全<%=@products.count %>件）</p>
+      <%=render 'index',products: @products%>
        </div>
       
     </div>
   </div>
 </div>
-
-    
-    <!--Some quick example text to build on the card title and make up the bulk of the card's content.-->
-    <!--<a href="#" class="card-link">Card link</a>-->
-    <!--<a href="#" class="card-link">Another link</a>-->
