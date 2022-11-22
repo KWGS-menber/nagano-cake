@@ -1,10 +1,9 @@
 <header>
   <nav class="nav navbar-expand-lg navbar-light bg-light">
     <div class="container">
-    <!--<nav class="nav navbar-expand-lg navbar-light bg-light">-->
-      <!--<%#= link_to root_path do %>-->
-        <!--<%#= image_tag "", :size =>'80x80' %>-->
-      <!--<%# end %>-->
+      <%= link_to root_path do %>
+        <%= image_tag 'logo_sample.jpeg' %>
+      <% end %>
       <ul class="navbar-nav ms-auto">
       <!--customerでログインしている時-->
       <% if customer_signed_in? %>
