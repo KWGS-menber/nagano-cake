@@ -34,10 +34,10 @@ Rails.application.routes.draw do
     patch '/customers/delete_status' => 'customers#is_deleted'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only:[:index,:update,:destroy,:create]
+    get '/orders/thanks' => 'orders#thanks'
     resources :orders, only:[:new,:index,:show,:create]
     get '/orders/new' => 'orders#new'
     post '/orders/confirm' => 'orders#confirm'
-    get '/orders/thanks' => 'orders#thanks'
     resources :deliveries, only:[:index,:edit,:create,:update,:destroy]
   end
 

@@ -29,7 +29,9 @@
         <tr>
 
           <td class="bg-light">送料</td>
-          <td>800</td>
+          <% @order.postage = 800 %>
+          <td><%=@order.postage %></td>
+          
         </tr>
         <tr>
           <td class="bg-light">商品合計</td>
@@ -37,19 +39,27 @@
         </tr>
         <tr>
           <th class="bg-light">請求金額</th>
-          <td></td>
+          <% @order.total_price = @order.postage + total%>
+         <td><%= @order.total_price.to_s(:delimited)%></td>
         </tr>
       </table>
 
       <strong>支払い方法</strong>
-      <p><%= @order.payment_method %></p><br>
+      <p><%= @order.payment_method_i18n%></p><br>
 
       <strong>お届け先</strong>
       <p><%= "〒" + @order.zip + " " + @order.address + " " + @order.name %></p>
 
 
      <div class="text-center">
-    <%=form_with model: @order , url: orders_confirm_path, method: :post do |f|%>
+    <%=form_with model: @new_order , url: orders_path, method: :post do |f|%>
+    <%= f.hidden_field:zip,:value => @order.zip%>
+    <%= f.hidden_field:address,:value => @order.address%>
+    <%= f.hidden_field:name,:value => @order.name%>
+    <%= f.hidden_field:payment_method,:value => @order.payment_method%>
+    <%= f.hidden_field:total_price,:value => @order.total_price%>
+    <%= f.hidden_field:postage,:value => @order.postage%>
+    <%= f.hidden_field:status,:value => @order.status%>
     <%=f.submit '注文を確定する',class: "btn btn-success" %>
     <%end%></div>
 
