@@ -6,6 +6,7 @@ class Admin::ProductsController < ApplicationController
 
  def create
    @product=Product.new(product_params)
+   #binding.pry
    # if 
    @product.save
    #  flash[:notice]="商品の登録が完了しました"

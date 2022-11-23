@@ -6,7 +6,7 @@
     <div class="col-8 md-8 offset-2 ">
      
      <table>
-      <%= form_with url: admin_products_path,method: :post, model: @product do |f|%>
+      <%= form_with model: @product,url: admin_products_path, method: :post do |f|%>
       <tr>
         <th>商品画像</th><th><%= f.file_field :image, accept: "image/*" %></th>
       </tr>
