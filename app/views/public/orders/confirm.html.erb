@@ -40,6 +40,13 @@
           <td></td>
         </tr>
       </table>
+      
+      <strong>支払い方法</strong>
+      <p><%= @order.payment_method %></p><br>
+      
+      <strong>お届け先</strong>
+      <p><%= "〒" + @order.zip + " " + @order.address + " " + @order.name %></p>
+      
     
      <div class="text-center">
     <%=form_with model: @order, url: orders_confirm_path, method: :post do |f|%>
