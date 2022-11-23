@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
 
     # @status = Order.status
   end
-  
+
   private
   # def prder_params
   #   params.require(:order).permit()

@@ -5,12 +5,10 @@ class Public::CartItemsController < ApplicationController
   end
   
   def create
-    
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id=current_customer.id
+    # binding.pry
+    @cart_item = current_customer.cart_items.new(cart_item_params)
     # もし元々カート内に「同じ商品」がある場合、「数量を追加」更新・保存する
         #ex.バナナ２個、バナナ２個ではなくバナナ「4個」にしたい
-        #binding.pry
         if current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id]).present?
                           #元々カート内にあるもの「item_id」
                           #今追加した      params[:cart_item][:item_id])
@@ -20,13 +18,13 @@ class Public::CartItemsController < ApplicationController
                                                               #.to_iとして数字として扱う
             cart_item.save
             redirect_to cart_items_path
-    
+
         # もしカート内に「同じ」商品がない場合は通常の保存処理 
         elsif @cart_item.save
               @cart_items = current_customer.cart_items.all
-            redirect_to cart_items_path
+            render 'index'
         else# 保存できなかった場合
-            redirect_to cart_items_path
+            render 'index'
         end
   end
   
