@@ -3,17 +3,18 @@ class Public::OrdersController < ApplicationController
   def new
     @address = current_customer.address
     @order = Order.new
+    @cart_items = CartItem.all
   end
 
 
   def confirm
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
-    
+
     if params[:order][:select_address] == "1" #自分の住所が選択された場合
       @order.zip = current_customer.zip
       @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.farst_name
+      @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "2" #配送先の住所が選択された場合
       delivery = Delivery.find(params[:order][:delivery_id])
       @order.zip = delivery.zip
@@ -39,7 +40,15 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.order.new(order_params)
     @order.save
-    flash[:notice] = ""
+    curent_customer.cart_items.each do |cart_item|
+      @ordered_item = OrderedItem.new
+      @ordered_item.order_id = @order.id
+      @ordered_item.item_id =  cart_item.item_id
+      @ordered_item.count = cart_item.product_count
+      @ordered_item.total_price = (cart_item.total_price + postage).floor
+      @ordered_item.save
+    end
+    current_customer.cart_items.destroy_all
     redirect_to orders_thanks_path
     if params[:order][:select_address] == "3"
       current_customer.delivery_address.create(address_params)
@@ -59,7 +68,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-    params.require(:order).permit( :name, :zip, :address,:total_price,:postage,:payment_method,:status, :select_address)
+    params.require(:order).permit( :name, :zip, :address,:total_price,:postage,:payment_method,:status)
   end
 
   def address_params
