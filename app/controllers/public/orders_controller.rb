@@ -9,8 +9,9 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    @new_order=Order.new
     @cart_items = current_customer.cart_items.all
-
+    @order.status=0
     if params[:order][:select_address] == "1" #自分の住所が選択された場合
       @order.zip = current_customer.zip
       @order.address = current_customer.address
@@ -38,14 +39,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.save
-    curent_customer.cart_items.each do |cart_item|
-      @ordered_item = OrderedItem.new
+    current_customer.cart_items.each do |cart_item|
+      @ordered_item = OrderItem.new
       @ordered_item.order_id = @order.id
-      @ordered_item.item_id =  cart_item.item_id
-      @ordered_item.count = cart_item.product_count
-      @ordered_item.total_price = (cart_item.total_price + postage).floor
+      @ordered_item.product_id =  cart_item.product_id
+      @ordered_item.product_count = cart_item.product_count
+      @ordered_item.price = cart_item.product.price 
+      @ordered_item.produntion_status=0
       @ordered_item.save
     end
     current_customer.cart_items.destroy_all
@@ -68,7 +70,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-    params.require(:order).permit( :name, :zip, :address,:total_price,:postage,:payment_method,:status)
+    params.require(:order).permit( :name, :zip, :address,:total_price,:postage,:payment_method, :status)
   end
 
   def address_params
