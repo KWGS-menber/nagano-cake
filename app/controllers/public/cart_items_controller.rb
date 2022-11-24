@@ -1,9 +1,9 @@
 class Public::CartItemsController < ApplicationController
-  
+
   def index
     @cart_items = current_customer.cart_items.all
   end
-  
+
   def create
     # binding.pry
     @cart_item = current_customer.cart_items.new(cart_item_params)
@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
             cart_item.save
             redirect_to cart_items_path
 
-        # もしカート内に「同じ」商品がない場合は通常の保存処理 
+        # もしカート内に「同じ」商品がない場合は通常の保存処理
         elsif @cart_item.save
               @cart_items = current_customer.cart_items.all
             render 'index'
@@ -27,14 +27,14 @@ class Public::CartItemsController < ApplicationController
             render 'index'
         end
   end
-  
+
   def update
     @cart_item=CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     flash[:notice]="変更を修正しました"
     redirect_to cart_items_path
   end
-  
+
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
@@ -48,15 +48,15 @@ class Public::CartItemsController < ApplicationController
     cart_items.destroy_all
     redirect_to cart_items_path
   end
-    
-    
+
+
     private
-    
-    
+
+
     def cart_item_params
         params.require(:cart_item).permit(:product_id, :product_count)
     end
 
-  
-  
+
+
 end
