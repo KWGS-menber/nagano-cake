@@ -3,7 +3,7 @@
    <div class = 'row'>
     <% if @order.present? %>
      <strong>注文情報</strong>
-       <table>
+       <table class="table">
         <tbody>
          <tr>
           <th>注文日</th>
@@ -12,7 +12,7 @@
 
          <tr>
           <th>配達先</th>
-           <td><%= "〒" + zip + "  " + address + "  " + name  %></td>
+           <td><%= "〒" + @order.zip + "  " + @order.address + "  " + @order.name  %></td>
          </tr>
 
          <tr>
@@ -22,13 +22,13 @@
 
          <tr>
           <th>ステータス</th>
-           <td><%= @order.status %></td>
+           <td><%= @order.status_i18n %></td>
          </tr>
         </tbody>
        </table>
 
     <strong>請求情報</strong>
-     <table>
+     <table class="table">
       <tbody>
        <tr>
         <th>商品合計</th>
@@ -48,7 +48,7 @@
      </table>
 
     <strong>注文内容</strong>
-     <table>
+     <table class="table">
       <thead>
        <tr>
         <th>商品</th>
@@ -62,10 +62,10 @@
       <tbody>
        <% @order_items.each do |order_item| %>
         <tr>
-         <td><%= order_item.name %></td>
-         <td><%= order_item.price%></td>
+         <td><%= order_item.product.name %></td>
+         <td><%= order_item.product.price%></td>
          <td><%= order_item.product_count %></td>
-         <td><%= order_item.total_price %></td>
+         <td><%= order_item.product.price %></td>
         </tr>
        <% end %>
       </tbody>
