@@ -25,7 +25,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
       flash[:notice] = "配送先住所を変更しました"
-      redirect_to deliveryies_path
+      redirect_to deliveries_path
     else
       flash[:notice] = "配送先住所を入力してください"
       render :edit
@@ -35,7 +35,7 @@ class Public::DeliveriesController < ApplicationController
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to deliveryies_path
+    redirect_to deliveries_path
   end
 
   private
