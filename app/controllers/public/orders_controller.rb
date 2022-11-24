@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == "1" #自分の住所が選択された場合
       @order.zip = current_customer.zip
       @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
+      @order.name = current_customer.last_name + " " + current_customer.first_name
     elsif params[:order][:select_address] == "2" #配送先の住所が選択された場合
       delivery = Delivery.find(params[:order][:delivery_id])
       @order.zip = delivery.zip

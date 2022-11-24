@@ -13,7 +13,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery.customer_id = current_customer.id
     if @delivery.save
       flash[:notice] = "配送先住所を登録しました"
-      redirect_to deliveryies_path
+      redirect_to deliveries_path
     else
       @deliveries = Delivery.all.page(params[:page]).per(10)
       flash[:notice] = "配送先住所を入力してください"
