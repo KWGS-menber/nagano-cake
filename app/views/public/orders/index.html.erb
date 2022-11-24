@@ -26,7 +26,7 @@
       		     <% end %>
       		 </td>
       		 <td>
-      		     <%= order.total_price %>円
+      		     <%= order.total_price.to_s(:delimited) %>円
       		 </td>
       		 <td>
       		     <%= order.status_i18n %>
