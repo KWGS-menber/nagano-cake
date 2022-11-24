@@ -1,11 +1,11 @@
 <p>13ページ</p>
 <div class="container">
   <div class="row">
-    <div class="col-3 offset-2">
+    <div class="col-4 offset-2">
       <p>注文履歴詳細</p>
     </div>
 
-    <div>
+    <div class="field">
       <div class="col-3">
         <p class="text-left">購入者</p>
       </div>
@@ -14,16 +14,16 @@
       </div>
     </div>
 
-    <div>
+    <div class="field">
       <div class="col-3">
         <p class="text-left">注文日</p>
       </div>
       <div class="col-9">
-        <p class="text-left"><%#= @order.create_at %></p>
+        <p class="text-left"><%= @order.create_at.strftime('%Y/%m/%d' %></p>
       </div>
     </div>
 
-    <div>
+    <div class="field">
       <div class="col-3">
         <p class="text-left">配送先</p>
       </div>
@@ -37,7 +37,7 @@
         <p class="text-left">支払方法</p>
       </div>
       <div class="col-9">
-        <p class="text-left"><%= @order.payment_method %></p>
+        <p class="text-left"><%= @order.payment_method_i18n %></p>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
         <p class="text-left">購入ステータス</p>
       </div>
       <div class="col-9">
-        <p class="text-left"><%#= @order.status %></p>
+        <p class="text-left"><%= @order.status_i18n %></p>
       </div>
     </div>
 
@@ -75,7 +75,7 @@
         <%end%>
       </tbody>
     </table>
-    
+
     <table>
       <tr>
         <th>商品合計</th>
