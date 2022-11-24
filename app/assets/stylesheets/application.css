@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ 
+ header {
+   background-color: #8B4513;
+ }
+
+ footer {
+   background-color: #8B4513;
+ }
+ 
+ .navbar-toggler {
+   background-color: #fff;
+ }
+ 
+ .navbar-toggler-icon {
+   background-color: #fff;
+ }
