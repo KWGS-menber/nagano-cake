@@ -18,7 +18,7 @@
         <tr>
          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
          <td>
-            <%= "〒" + zip + "  " + address + "  " + name  %>
+            <%= "〒" + order.zip + "  " + order.address + "  " + order.name  %>
          </td>
       		 <td>
       		     <% order.order_items.each do |order_item| %>
