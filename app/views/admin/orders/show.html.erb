@@ -5,16 +5,16 @@
       <p>注文履歴詳細</p>
     </div>
 
-    <div class="fied">
+    <div>
       <div class="col-3">
         <p class="text-left">購入者</p>
       </div>
-      <div class="col-9">
+      <div>
         <p class="text-left"><%= @order.name %></p>
       </div>
     </div>
 
-    <div class="fied">
+    <div>
       <div class="col-3">
         <p class="text-left">注文日</p>
       </div>
@@ -23,16 +23,16 @@
       </div>
     </div>
 
-    <div class="fied">
+    <div>
       <div class="col-3">
         <p class="text-left">配送先</p>
       </div>
-      <div class="col-9">
+      <div>
         <p class="text-left"><%= @order.address %></p>
       </div>
     </div>
 
-    <div class="fied">
+    <div>
       <div class="col-3">
         <p class="text-left">支払方法</p>
       </div>
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="fied">
+    <div>
       <div class="col-3">
         <p class="text-left">購入ステータス</p>
       </div>
@@ -61,12 +61,14 @@
         </tr>
       </thead>
       <tbody>
+        <% total = 0 %>
         <% @order_items.each do |order_item| %>
         <tr>
           <td><%=order_item.product.name%></td>
-          <td><%=order_item.product.price%></td>
+          <td><%=order_item.product.add_tax_price.to_s(:delimited)  %></td>
           <td><%=order_item.product_count%></td>
-          <td></td>
+          <td><% subtotal = ((order_item.product.price*order_item.product_count)*1.08).to_i %>
+              <%= subtotal.to_s(:delimited)  %> <% total += subtotal %></td>
           <td><%=order_item.produntion_status%></td>
           <td><%= link_to"更新",admin_order_path,class: "btn btn-success" %></td>
         </tr>
