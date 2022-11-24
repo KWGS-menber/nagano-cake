@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
       @ordered_item.product_id =  cart_item.product_id
       @ordered_item.product_count = cart_item.product_count
       @ordered_item.price = cart_item.product.price
-      @ordered_item.produntion_status=0
+      @ordered_item.production_status=0
       @ordered_item.save
     end
     current_customer.cart_items.destroy_all

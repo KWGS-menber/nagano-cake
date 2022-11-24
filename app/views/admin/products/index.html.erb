@@ -17,7 +17,7 @@
        <td><%=link_to product.name, admin_product_path(product.id)%></td>
        <td><%=product.price.to_s(:delimited)%></td>
        <td><%=product.genre.name%></td>
-       <td><% if product.is_active= true%>
+       <td><% if product.is_active = true %>
         <strong class="text-success"><%='販売中' %></strong>
             <%else%>
         <strong class="text-secondry"><%='販売停止中' %></strong>

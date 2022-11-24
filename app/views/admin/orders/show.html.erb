@@ -49,7 +49,7 @@
         <p class="text-left"><%#= @order.status %></p>
       </div>
     </div>
-
+      <%= flash[:notice] %>
     <table class="table">
       <thead>
         <tr>
@@ -69,8 +69,12 @@
           <td><%=order_item.product_count%></td>
           <td><% subtotal = ((order_item.product.price*order_item.product_count)*1.08).to_i %>
               <%= subtotal.to_s(:delimited)  %> <% total += subtotal %></td>
-          <td><%=order_item.produntion_status%></td>
-          <td><%= link_to"更新",admin_order_path,class: "btn btn-success" %></td>
+              
+              <%=form_with model: order_item,url: admin_order_item_path,method: :patch do |f|%>
+          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%></td>
+          <!--< >-->
+          <td><%=f.submit "更新",class: "btn btn-success" %></td>
+              <%end%>
         </tr>
         <%end%>
       </tbody>
@@ -78,17 +82,18 @@
     
     <table>
       <tr>
-        <th>商品合計</th>
-        <td></td>
+        <th colspan=”2″>商品合計</th>
+        <td><%= total.to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <td class="bg-light">送料</td>
           <% @order.postage = 800 %>
-          <td><%=@order.postage %>円</td>
+          <td colspan=”1″><%=@order.postage %>円</td>
       </tr>
       <tr>
-        <th>請求金額合計</th>
-        <td>円</td>
+        <th colspan=”2″>請求金額合計</th>
+        <% @order.total_price = @order.postage + total%>
+        <td><%= @order.total_price.to_s(:delimited)%>円</td>
       </tr>
     </table>
 

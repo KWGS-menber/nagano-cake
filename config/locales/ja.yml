@@ -10,3 +10,9 @@
           make: "製作中"
           ready: "発送準備中"
           shipping: "発送済み"
+      order_item:
+        production_status:
+          cannot_start: "製作不可"
+          witing_for_production: "製作待ち"
+          in_production: "製作中"
+          completion_of_production: "製作完了"
