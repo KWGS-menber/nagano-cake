@@ -37,6 +37,7 @@ class Admin::ProductsController < ApplicationController
  
  def index
   @products=Product.all
+  @product=Product
  end
   
   

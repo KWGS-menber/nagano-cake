@@ -19,7 +19,7 @@
         <p class="text-left">注文日</p>
       </div>
       <div class="col-9">
-        <p class="text-left"><%= @order.create_at.strftime('%Y/%m/%d' %></p>
+        <p class="text-left"><%#= @order.create_at.strftime('%Y/%m/%d') %></p>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
       <thead>
         <tr>
           <th>商品名</th>
-          <th>単価</th>
+          <th>単価(税込)</th>
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
@@ -69,12 +69,10 @@
           <td><%=order_item.product_count%></td>
           <td><% subtotal = ((order_item.product.price*order_item.product_count)*1.08).to_i %>
               <%= subtotal.to_s(:delimited)  %> <% total += subtotal %></td>
-              
               <%=form_with model: order_item,url: admin_order_item_path,method: :patch do |f|%>
-          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%></td>
-          <!--< >-->
-          <td><%=f.submit "更新",class: "btn btn-success" %></td>
-              <%end%>
+          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%>
+          <%=f.submit "更新",class: "btn btn-success" %></td>
+          <%end%>
         </tr>
         <%end%>
       </tbody>
