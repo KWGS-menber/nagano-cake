@@ -16,21 +16,3 @@
           witing_for_production: "製作待ち"
           in_production: "製作中"
           completion_of_production: "製作完了"
-
-      activerecord:
-        errors:
-          models:
-            customer:
-              attributes:
-                name:
-                  blank: ユーザー名は空ではいけません
-                  taken: ユーザー名は既に利用されています
-                email:
-                  blank: メールアドレスが空です
-                  taken: メールアドレスが既に使用済みです
-                  password:
-                  blank: パスワードが空です
-                  too_short: パスワードは6文字以上で利用できます
-                password_confirmation:
-                  blank: 確認用パスワードが空です
-                  confirmation: 確認用パスワードが一致しません。
