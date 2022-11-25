@@ -26,6 +26,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:delivery_address]
       @order.name = params[:order][:delivery_name]
     else
+      flash[:notice]="未入力の情報があります"
       render 'new'
     end
     # @address = Address.find(params[:order][:address_id])
@@ -47,7 +48,7 @@ class Public::OrdersController < ApplicationController
       @ordered_item.product_id =  cart_item.product_id
       @ordered_item.product_count = cart_item.product_count
       @ordered_item.price = cart_item.product.price
-      @ordered_item.produntion_status=0
+      @ordered_item.production_status=0
       @ordered_item.save
     end
     current_customer.cart_items.destroy_all

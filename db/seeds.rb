@@ -90,7 +90,7 @@ Customer.create!(
         phone_number: '5555555555',
         password: 'eeeeee',
     }
-  ]
+   ]
 )
 
 # 配送先seed
@@ -110,3 +110,4 @@ Delivery.create!(
     }
   ]
 )
+
