@@ -1,6 +1,8 @@
 <div class="container">
+  <%= flash[:notice] %>
+
   <div class="row">
-    <h2 class="bg-light">配送先登録 / 一覧</h2>
+    <h2 class="bg-light my-3">配送先登録 / 一覧</h2>
   </div>
   <div class="row">
   <%= form_with model: @delivery, url:deliveries_path, method: :post, local:true do |f| %>
@@ -21,13 +23,13 @@
     </div>
   <% end %>
   </div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
-      <tr>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>宛名</th>
-        <th colspan="2"></th>
+      <tr class="table-active">
+        <th style="width: 20">郵便番号</th>
+        <th style="width: 40">住所</th>
+        <th style="width: 20">宛名</th>
+        <th style="width: 20" colspan="2"></th>
       </tr>
     </thead>
     <tbody>

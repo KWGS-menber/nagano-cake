@@ -27,7 +27,7 @@ class Public::DeliveriesController < ApplicationController
       flash[:notice] = "配送先住所を変更しました"
       redirect_to deliveries_path
     else
-      flash[:notice] = "配送先住所を入力してください"
+      flash[:notice] = "未入力の情報があります。"
       render :edit
     end
   end
