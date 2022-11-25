@@ -26,6 +26,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:delivery_address]
       @order.name = params[:order][:delivery_name]
     else
+      flash[:notice]="未入力の情報があります"
       render 'new'
     end
     # @address = Address.find(params[:order][:address_id])
