@@ -49,7 +49,7 @@
       <thead>
         <tr>
           <th>商品名</th>
-          <th>単価</th>
+          <th>単価(税込)</th>
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
@@ -66,10 +66,9 @@
               <%= subtotal.to_s(:delimited)  %> <% total += subtotal %></td>
 
               <%=form_with model: order_item,url: admin_order_item_path,method: :patch do |f|%>
-          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%></td>
-          <!--< >-->
-          <td><%=f.submit "更新",class: "btn btn-success" %></td>
-              <%end%>
+          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%>
+          <%=f.submit "更新",class: "btn btn-success" %></td>
+          <%end%>
         </tr>
         <%end%>
       </tbody>
