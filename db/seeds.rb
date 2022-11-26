@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-<<<<<<< Updated upstream
     email: 'test@test.com',
     password: '123456',
 )
@@ -155,10 +154,10 @@ Order.create!(  [{
       payment_method: "credit_card",
       status: "wait",
   }
-  
+
   ]
   )
-  
+
  OrderItem.create!(
     [
       {
@@ -175,7 +174,7 @@ Order.create!(  [{
         product_count: 3,
         price: 500,
         production_status: "cannot_start",
-        
+
       },
       {
         id: 3,
@@ -193,12 +192,5 @@ Order.create!(  [{
         price: 1200,
         production_status: "cannot_start",
       }
-      
-      
     ]
   )
-=======
-  email: 'admin@admin',
-  password: 'test'
-)
->>>>>>> Stashed changes
