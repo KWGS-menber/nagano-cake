@@ -1,23 +1,23 @@
 <div class="conteiner ml-5">
   <div class="row">
-    <h2 class="bg-light">ジャンル一覧・追加</h2>
+    <h2 class="bg-light mt-4 offset-1">ジャンル一覧・追加</h2>
   </div>
-  <div class="row">
-  <%= form_with model: @genre, url:admin_genres_path, method: :post, local:true do |f| %>
-    <div class="form-group">
-      <%= f.label :ジャンル名 %>
-      <%= f.text_field :name, class: 'form-control genre_name' %>
-    </div>
-    <div class="form-group">
-      <%= f.submit '新規登録', class: 'btn btn-success' %>
-    </div>
-  <% end %>
+    <%= form_with model: @genre, url:admin_genres_path, method: :post, local:true do |f| %>
+      <div class="form-group">
+        <!--<div class="col-sm-3">-->
+        <%= f.label :ジャンル名 %>
+        <%= f.text_field :name, class: 'form-control col-sm-5 genre_name' %>
+      </div>
+        <div class="form-group">
+          <%= f.submit '新規登録', class: 'btn btn-success' %>
+        
+        <% end %>
   </div>
   <table class="table">
     <thead>
-      <tr>
-        <th>ジャンル</th>
-        <th colspan="1"></th>
+      <tr class="table-hover">
+        <th class="table-activ">ジャンル</th>
+        <!--<th colspan="1"></th>-->
       </tr>
     </thead>
     <tbody>
