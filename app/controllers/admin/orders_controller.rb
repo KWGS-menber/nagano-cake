@@ -15,8 +15,8 @@ class Admin::OrdersController < ApplicationController
     @order_items = @order.order_items
     @order.update(order_params)
 
-    if @order.status == "入金確認"
-      @order_items.update_all(witing_for_production: "製作待ち")
+    if @order.status == "confirmation"
+      @order_items.update_all(production_status: "witing_for_production")
 
 
     # if @order.update(order_params)
