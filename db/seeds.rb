@@ -129,6 +129,30 @@ Delivery.create!(
       name: "秩父 埼玉",
       zip: "1234568",
       address: "埼玉県山崎ウイスキー蒸留所",
+    },
+    {
+      customer_id: 4,
+      name: "桜木 男道",
+      zip: "1470017",
+      address: "東京都都立 武蔵野北高等学校",
+    },
+    {
+      customer_id: 4,
+      name: "マツコの部屋",
+      zip: "1060046",
+      address: "東京都港区元麻布 スーパーデラックスビル 20-22階,玄関は20階",
+    },
+    {
+      customer_id: 4,
+      name: "目黒 秋刀魚",
+      zip: "1170117",
+      address: "不思議の国の絵本の目黒町",
+    },
+    {
+      customer_id: 4,
+      name: "三鳥 ウイスキー",
+      zip: "6180001",
+      address: "大阪府三島郡島本町 山崎ウイスキー蒸留所",
     }
   ]
 )
@@ -154,10 +178,10 @@ Order.create!(  [{
       payment_method: "credit_card",
       status: "wait",
   }
-  
+
   ]
   )
-  
+
  OrderItem.create!(
     [
       {
@@ -174,7 +198,7 @@ Order.create!(  [{
         product_count: 3,
         price: 500,
         production_status: "cannot_start",
-        
+
       },
       {
         id: 3,
@@ -194,7 +218,7 @@ Order.create!(  [{
       }
     ]
   )
-  
+
   product4 = Product.create!(
       id: 4,
       genre_id: 2,
@@ -214,3 +238,4 @@ product5 = Product.create!(
       is_active: true
 )
 product5.image.attach(io: File.open(Rails.root.join("app/assets/images/x'mas_cake.jpg")), filename: "x'mas_cake.jpg")
+
