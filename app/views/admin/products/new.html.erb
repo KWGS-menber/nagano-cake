@@ -1,5 +1,11 @@
-<%= flash[:danger] %>
-
+<% if @product.errors.any? %>
+  <%= @product.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container m-5">
   <div class="row">
       <h3>商品新規登録</h3>
