@@ -5,9 +5,7 @@
       <div class="text-right">
         <%= link_to 'カートを空にする',cart_items_destroy_all_path,method: :delete,class: 'btn btn-danger', "data-confirm" => "本当によろしいですか？" %>
       </div>
-      <!--<div class="alert alert-success" role="alert">-->
-       <%= flash[:notice] %>
-       <!--</div>-->
+
         <% if @cart_items.exists?%>
       <table class="table table-bordered border-primary mt-3">
         <tr class="alert-secondary">

@@ -89,6 +89,28 @@ Customer.create!(
         address: '東京都港区□□',
         phone_number: '5555555555',
         password: 'eeeeee',
+    },
+    {
+        last_name: 'Waggy',
+        first_name: '審司',
+        last_kana: 'ワギー',
+        first_kana: 'シンジ',
+        email: 'test@test',
+        zip: '1600023',
+        address: '東京都新宿区西新宿３−７−２６−１００６',
+        phone_number: '2525252525',
+        password: 'mmmmmm',
+    },
+    {
+        last_name: 'カラスの',
+        first_name: 'カァ',
+        last_kana: 'カラスノ',
+        first_kana: 'カァ',
+        email: 'kaa@kaa',
+        zip: '5555555',
+        address: 'でんしんばしら１本目',
+        phone_number: '5555555555',
+        password: 'kkkkkk',
     }
    ]
 )
@@ -111,3 +133,66 @@ Delivery.create!(
   ]
 )
 
+Order.create!(  [{
+    id: 1,
+  customer_id: 5,
+  name: "カラスの カァ",
+  zip: '5555555',
+  address: 'でんしんばしら１本目',
+  total_price: 3716,
+  postage: 800,
+  payment_method: "credit_card",
+  status: "wait",},
+  {
+    id: 2,
+      customer_id: 4,
+      name: "Waggy 審司",
+      zip: "1600023",
+      address: "東京都新宿区西新宿３−７−２６−１００６",
+      total_price: 5012,
+      postage: 800,
+      payment_method: "credit_card",
+      status: "wait",
+  }
+  
+  ]
+  )
+  
+ OrderItem.create!(
+    [
+      {
+        id: 1,
+        product_id: 3,
+        order_id: 1,
+        product_count: 1,
+        price: 1200,
+        production_status: "witing_for_production",
+      },
+      {  id: 2,
+        product_id: 1,
+        order_id: 1,
+        product_count: 3,
+        price: 500,
+        production_status: "cannot_start",
+        
+      },
+      {
+        id: 3,
+        product_id: 1,
+        order_id: 2,
+        product_count: 3,
+        price: 500,
+        production_status: "cannot_start",
+      },
+      {
+        id: 4,
+        product_id: 3,
+        order_id: 2,
+        product_count: 2,
+        price: 1200,
+        production_status: "cannot_start",
+      }
+      
+      
+    ]
+  )
