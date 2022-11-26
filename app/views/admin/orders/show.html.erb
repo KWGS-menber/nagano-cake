@@ -38,7 +38,6 @@
       <strong class="text-left">注文ステータス</strong>
     </div>
     <div class="col-9">
-      <p class="text-left"><%= @order.status_i18n %><%#= @order.order_items.production_status %></p>
       <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f|%>
         <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
         <%= f.submit "更新", class: "btn btn-success" %></td>
@@ -47,7 +46,7 @@
   </div>
 
 
-    <table class="table col-8">
+    <table class="table col-8 my-3">
       <thead>
         <tr class="table-secondary">
           <th>商品名</th>
