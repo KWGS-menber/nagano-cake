@@ -39,10 +39,8 @@
     </div>
     <div class="col-9">
       <p class="text-left"><%= @order.status_i18n %><%#= @order.order_items.production_status %></p>
-      <%= form_with model: @order, url: admin_order_path, method: :patch do |f|%>
-        <%#=f.select :status, ["入金待ち","入金確認","製作中","発送準備中","発送済み"], class: "order_status"%>
-        <%= f.select :status, Order.statuses.keys, class: "select_status" %>
-        <%#= f.select :status, options_from_collection_for_select(Order.statuses.key, :status)%>
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f|%>
+        <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
         <%= f.submit "更新", class: "btn btn-success" %></td>
       <%end%>
     </div>
@@ -72,6 +70,7 @@
               <%=form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f|%>
           <td><%#=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%>
           <%= f.select :production_status,OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}%>
+
           <%=f.submit "更新",class: "btn btn-success" %></td>
           <%end%>
         </tr>
@@ -96,8 +95,5 @@
       </tr>
     </table>
     </div>
-
-
-
   </div>
 </div>
