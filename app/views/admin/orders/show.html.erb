@@ -47,7 +47,6 @@
   </div>
 
 
-      <%= flash[:notice]%>
     <table class="table col-8">
       <thead>
         <tr class="table-secondary">
@@ -69,7 +68,9 @@
               <%= subtotal.to_s(:delimited)  %> <% total += subtotal %></td>
 
               <%=form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f|%>
-          <td><%=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%>
+          <td><%#=f.select:production_status, OrderItem.production_statuses.keys, class: "production_status-select"%>
+          <%= f.select :production_status,OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}%>
+
           <%=f.submit "更新",class: "btn btn-success" %></td>
           <%end%>
         </tr>
