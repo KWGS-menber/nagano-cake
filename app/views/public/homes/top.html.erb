@@ -1,18 +1,21 @@
-<div class="container m-5 ">
-  <div class="row">
-    <div class="col-md-2">
-     <%=render '/public/products/genre_form',genres: @genres%>
-   </div>
-  <div class= "col-md-9 offset-1 ">
-   <p s>ようこそながのCAKEへ!!<br>
-   このサイトは、ケーキ販売のECサイトになります。<br>
-   会員ではない方も商品の閲覧はできますが、<br>
-   購入には会員登録が必要になります。
-   </p>
-   <div>
-     <h3 class = 'col-3'><strong>新着商品</strong></h3>
-     <%=render '/public/products/index',products: @products%>
-   </div>
-  </div>
-  </div>
+<%= flash[:notice] %>
+  <div class="container m-5 ">
+    <div class="row">
+      <div class="col-md-2">
+         <%=render '/public/products/genre_form',genres: @genres%>
+      </div>
+
+      <div class= "col-md-9 offset-1 ">
+        <%= image_tag 'top_image.jpg', style: 'width: 800px; height: 400px; position: relative;' %>
+        <p style='position:absolute; top:130px; left:170px; font-size:25px; color:#FFF;'>
+          ようこそながのCAKEへ!!<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員ではない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+
+       <h3 class = 'mt-3 offset-3 col-3'><strong>新着商品</strong></h3>
+       <%=render '/public/products/index',products: @products%>
+    </div>
 </div>
