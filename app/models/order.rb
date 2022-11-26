@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   validates :payment_method, presence: true
-  validates :select_address, presence: true
+
 
 
   enum payment_method: { credit_card: 0, transfer: 1 }
