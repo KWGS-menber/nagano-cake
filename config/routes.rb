@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+<<<<<<< Updated upstream
     # get '/admins' => 'admins/homes#top'
     resources :products, only:[:index,:create,:show,:edit,:update,:new]
+=======
+    get '/admins' => 'admins#top'
+    resources :products, only:[:index,:create,:show,:edit,:update]
+>>>>>>> Stashed changes
     resources :genres, only:[:index,:create,:edit,:update]
     resources :customers, only:[:index,:show,:edit,:update]
     resources :orders,only:[:index,:show,:update]
