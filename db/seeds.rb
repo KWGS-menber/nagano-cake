@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
+<<<<<<< Updated upstream
     email: 'test@test.com',
     password: '123456',
 )
@@ -196,3 +197,8 @@ Order.create!(  [{
       
     ]
   )
+=======
+  email: 'admin@admin',
+  password: 'test'
+)
+>>>>>>> Stashed changes
