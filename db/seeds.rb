@@ -218,3 +218,24 @@ Order.create!(  [{
       }
     ]
   )
+
+  product4 = Product.create!(
+      id: 4,
+      genre_id: 2,
+      name: "いちごとベリーのタルト",
+      price: 1100,
+      explanation: "果実の甘みを活かす生地でふんわり包みました。",
+      is_active: true
+)
+product4.image.attach(io: File.open(Rails.root.join("app/assets/images/tart.jpg")), filename: "tart.jpg")
+
+product5 = Product.create!(
+      id: 5,
+      genre_id: 1,
+      name: "X'mas Special",
+      price: 5000,
+      explanation: "大切な人と今年はパーティしませんか？？。",
+      is_active: true
+)
+product5.image.attach(io: File.open(Rails.root.join("app/assets/images/x'mas_cake.jpg")), filename: "x'mas_cake.jpg")
+
