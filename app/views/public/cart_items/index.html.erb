@@ -19,7 +19,12 @@
           <% @cart_items.each do |cart|%>
         <tr>
           <td>
-            <%= image_tag cart.product.get_image(60,50)%>
+            <%#= image_tag cart.product.get_image(60,50)%>
+            <% if cart.product.image.attached? %>
+            <%= image_tag cart.product.image, size: "60x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "60x50" %>
+          <% end %>
             <%=cart.product.name%>
           </td>
           <td><%=cart.product.add_tax_price.to_s(:delimited) %></td>
